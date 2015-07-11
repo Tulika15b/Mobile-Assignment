@@ -4,17 +4,17 @@
   <App xmlns="" ProductID="{091556d6-3603-4595-9cca-9b287b82c2b9}" Title="LocationFinderApp" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="LocationFinderApp author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="LocationFinderApp" PublisherID="{74217f15-c84b-4a4e-88df-1ac417de6f3c}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
       <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_NETWORKING" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="/View/MainPage.xaml" ActivationPolicy="Resume">
         <BackgroundExecution>
-          <ExecutionType  Name="LocationTracking" />
+          <ExecutionType Name="LocationTracking" />
         </BackgroundExecution>
       </DefaultTask>
     </Tasks>

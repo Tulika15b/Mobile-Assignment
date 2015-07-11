@@ -1,6 +1,6 @@
-﻿<xapCache source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/11/2015 5:45:38 PM">
-  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="7/11/2015 2:29:29 PM" />
-  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/11/2015 5:45:37 PM" />
+﻿<xapCache source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/11/2015 11:07:47 PM">
+  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="7/11/2015 10:25:14 PM" />
+  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/11/2015 11:07:46 PM" />
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="7/7/2015 1:24:33 PM" />
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\BadgeLogo.png" archivePath="Assets\BadgeLogo.png" lastWriteTime="7/7/2015 1:24:33 PM" />
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Logo.png" archivePath="Assets\Logo.png" lastWriteTime="7/7/2015 1:24:33 PM" />
@@ -18,7 +18,7 @@
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="7/7/2015 1:24:33 PM" />
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="7/8/2015 11:19:23 PM" />
   <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="7/8/2015 11:19:23 PM" />
-  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="7/10/2015 4:10:26 PM" />
-  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/11/2015 5:45:38 PM" />
-  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="7/11/2015 2:29:29 PM" />
+  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="7/11/2015 9:32:49 PM" />
+  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/11/2015 11:07:46 PM" />
+  <file source="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="7/11/2015 10:25:14 PM" />
 </xapCache>

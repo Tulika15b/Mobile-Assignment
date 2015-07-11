@@ -51,7 +51,7 @@ namespace LocationFinderApp.Utilities
                             loadedData.Descendants("User").Single().SetElementValue("UserId", usr.userName);
                             loadedData.Descendants("User").Single().SetElementValue("Latitude", usr.location.Latitude);
                             loadedData.Descendants("User").Single().SetElementValue("Longitude", usr.location.Longitude);
-                            loadedData.Descendants("User").Single().SetElementValue("LastUpdatedOn", usr.LastUpdatedOn);
+                            loadedData.Descendants("User").Single().SetElementValue("LastUpdatedOn", usr.LastSubmittedDateTime);
 
                             stream.Close();
                            

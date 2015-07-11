@@ -45,7 +45,7 @@ namespace LocationFinderApp.ViewModels
             persistantDataStorageObj.saveUserDetails(newUser);
         }
 
-        public async Task<Location> fetchLocation(bool checkIfFirstTime)
+        public async Task<User> fetchLocation(bool checkIfFirstTime)
         {
             isFirstTime = checkIfFirstTime;
             newUser = new User();
@@ -62,19 +62,17 @@ namespace LocationFinderApp.ViewModels
                          timeout: TimeSpan.FromSeconds(10)
                 );
 
-
                 newUser.location.Latitude = geoPosition.Coordinate.Point.Position.Latitude.ToString();
                 newUser.location.Longitude = geoPosition.Coordinate.Point.Position.Longitude.ToString();
-
-                
 
             }
             catch(Exception ex)
             {
                 newUser.errorMsg = ex.Message;
+                newUser.errorCode = Constants.ERROR;
             }
 
-            return location;           
+            return newUser;           
         }
 
         void geoLocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
@@ -102,18 +100,23 @@ namespace LocationFinderApp.ViewModels
             }
         }
 
-        public void sendLocationData()
+        public string sendLocationData()
         {
             isLastSubmitted = true;
             submissionTime = DateTime.Now;
-          //  newUser.LastUpdatedOn = submissionTime.ToString();
-
 
             //Create Http Request
             HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
             
             clientReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), clientReq);
-          
+            if(newUser.errorMsg != null)
+            {
+                return Constants.SUCCESS;
+            }
+            else
+            {
+                return Constants.ERROR;
+            }          
         }
 
         
@@ -123,41 +126,35 @@ namespace LocationFinderApp.ViewModels
             {
                 newUser.userName = "John Doe";
             }
-            string postdata = "data="+ newUser.userName + "is now at"+ newUser.location.Latitude+"/"+ newUser.location.Longitude;
+            string postdata = "data="+ newUser.userName + " is now at "+ newUser.location.Latitude+"/"+ newUser.location.Longitude;
            
             try
             {
                 HttpWebRequest requestObj = await req.sendHttpRequest(asynchronousResult, postdata);
-                
                 requestObj.BeginGetResponse(new AsyncCallback(GetResponseCallback), requestObj);
             }
             catch (WebException ex)
             {
-               
-                    if (ex.Status != WebExceptionStatus.RequestCanceled)
-                    {
-                        newUser.errorMsg = ex.Message;
+                if (ex.Status != WebExceptionStatus.RequestCanceled)
+                {
+                     newUser.errorMsg = ex.Message;
 
-                    }
+                }
                 
             }
-
-            catch (Exception e)
-            {
-                
-            }
-
-
 
         }
 
         private async void GetResponseCallback(IAsyncResult asynchronousResult)
         {
+
+            HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+
+            // End the operation
             try
             {
-                HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
-                string responseString = await req.receiveHttpResonse(request, asynchronousResult);
-
+                var responseString = await req.receiveHttpResonse(request, asynchronousResult);
+            
                 if (responseString != null)
                 {
                     if(responseString.Equals(Constants.ERROR))
@@ -177,8 +174,8 @@ namespace LocationFinderApp.ViewModels
         {
             if(isLastSubmitted)
             {
-                var lastSubmittedTime = submissionTime - DateTime.Now;
-                newUser.LastUpdatedOn = lastSubmittedTime.ToString();
+                var lastSubmittedTime = submissionTime;
+                newUser.LastUpdatedOn = RelativeTimeConvertor.calculateRelativeTime(lastSubmittedTime);
             }
             return newUser.LastUpdatedOn;
         }

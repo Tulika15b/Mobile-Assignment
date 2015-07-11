@@ -100,6 +100,7 @@
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\HttpServiceRequestClass.cs" />
     <Compile Include="Utilities\PersistantDataStorage.cs" />
+    <Compile Include="Utilities\RelativeTimeConvertor.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

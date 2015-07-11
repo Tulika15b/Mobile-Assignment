@@ -19,10 +19,8 @@ namespace LocationFinderApp.Utilities
             clientReq.AllowReadStreamBuffering = false;
             clientReq.ContentType = "application/json";
             clientReq.Method = "POST";
-            NetworkCredential cred = new NetworkCredential("tulika", "phil53");
+            NetworkCredential cred = new NetworkCredential(Constants.CREDS_USERNAME, Constants.CREDS_PASSWORD);
             clientReq.Credentials = cred;
-            
-            // TODO : Add -d -u for POST command
 
             return clientReq;
         }
@@ -48,21 +46,40 @@ namespace LocationFinderApp.Utilities
 
         public async Task<string> receiveHttpResonse(HttpWebRequest request, IAsyncResult asynchronousResult)
         {
-            HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
-            Stream streamResponse = response.GetResponseStream();
-            StreamReader streamRead = new StreamReader(streamResponse);
-            string responseString = await streamRead.ReadToEndAsync();
+            string responseString = String.Empty;
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
+                Stream streamResponse = response.GetResponseStream();
+                StreamReader streamRead = new StreamReader(streamResponse);
+                responseString = await streamRead.ReadToEndAsync();
 
-            //var userResp = JsonConvert.DeserializeObject<T>(responseString);
-            // Close the stream object
-            streamResponse.Close();
-            streamRead.Close();
+                //var userResp = JsonConvert.DeserializeObject<T>(responseString);
+                // Close the stream object
 
-            // Release the HttpWebResponse
-            response.Close();
+                streamRead.Close();
+                streamResponse.Close();
+                // Release the HttpWebResponse
+                response.Close();
+
+                HttpStatusCode responseCode = response.StatusCode;
+                if (responseCode == HttpStatusCode.Created)
+                {
+                    return Constants.SUCCESS;
+                }
+                else
+                {
+                    return Constants.ERROR;
+                }
+     
+            }
+            catch(WebException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             return responseString;
-
         }
+
     }
 }

@@ -58,7 +58,11 @@
                 </StackPanel>
                 
                 <Button x:Name="Submit_Button" Content="Submit" Margin="20, 50, 0, 0" Click="Submit_Button_Click" />
-                <TextBlock x:Name="lastSubmitted_txt_blk" Text="Last submitted 5 mins ago" Margin="20, 20, 0, 0"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Last submitted" Margin="20, 20, 0, 0"/>
+                    <TextBlock x:Name="lastSubmitted_txt_blk" Text="" Margin="10, 20, 0, 0"/>
+                </StackPanel>
+               
             </StackPanel>
         </Grid>
  
