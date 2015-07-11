@@ -19,6 +19,7 @@ ABOUT THE CODE :
 The code has been designed keeping in mind the MVVM design pattern for Windows Phone 8.
 
 1. DataModel
+
 The User class - Contains information like username, Location, isLastSubmitted check, LastSubmitted time string.
 Location class - Contains the latitude and longitude as string. It is also a member of User class.
 
