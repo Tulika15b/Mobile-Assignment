@@ -120,7 +120,7 @@ namespace LocationFinderApp
             if (!tracking)
             {
                 geoLocator.DesiredAccuracy = PositionAccuracy.High;
-                geoLocator.MovementThreshold = 1;
+                geoLocator.MovementThreshold = 100;
                 geoLocator.PositionChanged += geoLocator_PositionChanged;
                 geoLocator.StatusChanged += geoLocator_StatusChanged;
                 tracking = true;
