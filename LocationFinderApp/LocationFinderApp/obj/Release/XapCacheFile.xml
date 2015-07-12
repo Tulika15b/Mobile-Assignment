@@ -1,6 +1,6 @@
-﻿<xapCache source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/12/2015 5:26:32 PM">
+﻿<xapCache source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/12/2015 5:44:24 PM">
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\resources.pri" archivePath="resources.pri" lastWriteTime="7/12/2015 5:14:40 PM" />
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/12/2015 5:26:31 PM" />
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/12/2015 5:44:23 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="7/11/2015 11:35:00 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\BadgeLogo.png" archivePath="Assets\BadgeLogo.png" lastWriteTime="7/11/2015 11:35:00 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\Logo.png" archivePath="Assets\Logo.png" lastWriteTime="7/11/2015 11:35:00 PM" />
@@ -19,6 +19,6 @@
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="7/11/2015 11:35:04 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="7/11/2015 11:35:04 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="7/11/2015 11:51:08 PM" />
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/12/2015 5:26:32 PM" />
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/12/2015 5:44:24 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="7/12/2015 5:14:40 PM" />
 </xapCache>
