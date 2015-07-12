@@ -48,7 +48,7 @@ namespace LocationFinderApp.Utilities
 
                             loadedData = XDocument.Load(stream);
 
-                            loadedData.Descendants("User").Single().SetElementValue("UserId", usr.userName);
+                            loadedData.Descendants("User").Single().SetElementValue("userName", usr.userName);
                             loadedData.Descendants("User").Single().SetElementValue("Latitude", usr.location.Latitude);
                             loadedData.Descendants("User").Single().SetElementValue("Longitude", usr.location.Longitude);
                             loadedData.Descendants("User").Single().SetElementValue("LastUpdatedOn", usr.LastSubmittedDateTime);
@@ -93,7 +93,7 @@ namespace LocationFinderApp.Utilities
             return newUser;
         }
 
-        public void deleteUserDetails(string UserId)
+        public void deleteUserDetails()
         {
             using (IsolatedStorageFile isoStorage = IsolatedStorageFile.GetUserStoreForApplication())
             {

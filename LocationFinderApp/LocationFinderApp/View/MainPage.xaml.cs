@@ -24,9 +24,11 @@ namespace LocationFinderApp
     {
 
         ViewModel viewModel = new ViewModel();
-        string lastUpdatedLocationOn;
+        DateTime lastSubmittedDateTime;
         bool isFirstTime = true;
         User newUser = new User();
+
+
         // Constructor
         public MainPage()
         {
@@ -58,6 +60,8 @@ namespace LocationFinderApp
                //this implies it is not the first time of app
                //Hence read the saved data and display on Screen
                 isFirstTime = false;
+                Lat.Text = newUser.location.Latitude;
+                Long.Text = newUser.location.Longitude;
                 fetchLocation(isFirstTime);
                 lastSubmitted_txt_blk.Text = viewModel.getLastSubmittedTime(newUser.LastSubmittedDateTime);
                 LocationUserName.Text = newUser.userName;
@@ -65,9 +69,8 @@ namespace LocationFinderApp
             }
            else
            {
-               Lat.Text = "0";
-               Long.Text = "0";
-               
+               Lat.Text = "0.0";
+               Long.Text = "0.0";
                fetchLocation(isFirstTime);
                
            }
@@ -79,6 +82,7 @@ namespace LocationFinderApp
             if(Lat.Text != String.Empty && Long.Text != String.Empty)
             {
                 string response = viewModel.sendLocationData();
+                lastSubmittedDateTime = DateTime.Now;
                 getRelativeLastSubmittedTime(DateTime.Now);
                
             }
@@ -88,9 +92,12 @@ namespace LocationFinderApp
       
         public async void fetchLocation(bool isFirstTime)
         {
-            var user = await viewModel.fetchLocation(isFirstTime);
+
+            User user = await viewModel.fetchLocation(isFirstTime);
+           
             Lat.Text = user.location.Latitude;
             Long.Text = user.location.Longitude;
+            lastSubmitted_txt_blk.Text = user.lastUpdatedOn;
            // getRelativeLastSubmittedTime(DateTime.Now);
 
             
@@ -100,9 +107,9 @@ namespace LocationFinderApp
         {
             //Call to make a http post to server
             sendLocation();
-            lastUpdatedLocationOn = DateTime.Now.ToString();
+            lastSubmittedDateTime = DateTime.Now;
 
-            getRelativeLastSubmittedTime(DateTime.Now);
+           // getRelativeLastSubmittedTime(DateTime.Now);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -121,6 +128,8 @@ namespace LocationFinderApp
             newUser.location.Longitude = Long.Text;
             newUser.location.Latitude = Lat.Text;
             newUser.lastUpdatedOn = lastSubmitted_txt_blk.Text;
+            newUser.LastSubmittedDateTime = lastSubmittedDateTime;
+
             viewModel.saveUserData(newUser);
         }
 

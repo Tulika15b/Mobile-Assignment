@@ -10,69 +10,69 @@
     <IntermediateOutputPath>C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp.dll">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp.dll">
       <PackagePath>LocationFinderApp.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml">
       <PackagePath>Newtonsoft.Json.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\AlignmentGrid.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\AlignmentGrid.png">
       <PackagePath>Assets\AlignmentGrid.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\ApplicationIcon.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\ApplicationIcon.png">
       <PackagePath>Assets\ApplicationIcon.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\BadgeLogo.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\BadgeLogo.png">
       <PackagePath>Assets\BadgeLogo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Logo.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\SquareTile150x150.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\SquareTile150x150.png">
       <PackagePath>Assets\SquareTile150x150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\SquareTile71x71.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\SquareTile71x71.png">
       <PackagePath>Assets\SquareTile71x71.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\WideLogo.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\WideLogo.png">
       <PackagePath>Assets\WideLogo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileLarge.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileLarge.png">
       <PackagePath>Assets\Tiles\FlipCycleTileLarge.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileMedium.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileMedium.png">
       <PackagePath>Assets\Tiles\FlipCycleTileMedium.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileSmall.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileSmall.png">
       <PackagePath>Assets\Tiles\FlipCycleTileSmall.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Tiles\IconicTileMediumLarge.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Tiles\IconicTileMediumLarge.png">
       <PackagePath>Assets\Tiles\IconicTileMediumLarge.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Assets\Tiles\IconicTileSmall.png">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Assets\Tiles\IconicTileSmall.png">
       <PackagePath>Assets\Tiles\IconicTileSmall.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\Bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

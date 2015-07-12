@@ -15,8 +15,8 @@ namespace LocationFinderApp.ViewModels
 {
     public class ViewModel
     {
-        private IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-        PersistantDataStorage persistantDataStorageObj = new PersistantDataStorage();
+        private IsolatedStorageSettings userSettings = IsolatedStorageSettings.ApplicationSettings;
+       // PersistantDataStorage persistantDataStorageObj = new PersistantDataStorage();
 
         public bool isLastSubmitted = false;
         public bool isFirstTime;
@@ -27,28 +27,45 @@ namespace LocationFinderApp.ViewModels
 
         public User GetUserSavedData()
         {
-            newUser = persistantDataStorageObj.readUserDetails();
-            if(newUser != null)
-            {
-                return newUser;
-            }
+           if(userSettings.Count > 0)
+           {
+               if(userSettings.Contains("NewUser"))
+               {
+                   newUser = (User)userSettings["NewUser"];
+                   return newUser;
+               }
+               else
+               {
+                   return null;
+               }
+
+           }
             else
-            {
-                return null;
-            }
+           {
+               return null;
+           }
             
         }
 
         public void saveUserData(User saveNewUser)
         {
             newUser = saveNewUser;
-            persistantDataStorageObj.saveUserDetails(newUser);
+            if (userSettings.Contains("NewUser"))
+            {
+                userSettings["NewUser"] = saveNewUser;
+            }
+            else
+            {
+                userSettings.Add("NewUser", saveNewUser);
+            }
+           
+            //persistantDataStorageObj.saveUserDetails(newUser);
         }
 
         public async Task<User> fetchLocation(bool checkIfFirstTime)
         {
             isFirstTime = checkIfFirstTime;
-            newUser = new User();
+           // newUser = new User();
             Geolocator geoLocator = new Geolocator();
             geoLocator.DesiredAccuracy = PositionAccuracy.High;
             geoLocator.MovementThreshold = 100;
@@ -91,11 +108,12 @@ namespace LocationFinderApp.ViewModels
             else
             {
                 //App in activated or resumed state
-                location.Latitude = args.Position.Coordinate.Latitude.ToString("0.00");
-                location.Longitude = args.Position.Coordinate.Longitude.ToString("0.00");
+                newUser.location.Latitude = args.Position.Coordinate.Latitude.ToString("0.00");
+                newUser.location.Longitude = args.Position.Coordinate.Longitude.ToString("0.00");
                 if(isFirstTime)
                 {
                     sendLocationData();
+                      getLastSubmittedTime(DateTime.Now);
                 }
             }
         }
@@ -103,7 +121,7 @@ namespace LocationFinderApp.ViewModels
         public string sendLocationData()
         {
             isLastSubmitted = true;
-            submissionTime = DateTime.Now;
+           // submissionTime = DateTime.Now;
 
             //Create Http Request
             HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
@@ -174,7 +192,7 @@ namespace LocationFinderApp.ViewModels
         {
             if(isLastSubmitted)
             {
-                var lastSubmittedTime = submissionTime;
+                var lastSubmittedTime = submittedTime;
                 newUser.LastUpdatedOn = RelativeTimeConvertor.calculateRelativeTime(lastSubmittedTime);
             }
             return newUser.LastUpdatedOn;
