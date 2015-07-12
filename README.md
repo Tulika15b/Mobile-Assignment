@@ -1,26 +1,20 @@
 # Mobile-Assignment
 Windows Phone 8 Location Updater(The App is also compatible with Windows Phone 8.1 devices)
 
-<b>Code Compilation Instructions :</b>
-<b>Prerequisites</b> : 1. Windows 8 System
+Code Compilation Instructions :
+Prerequisites : 1. Windows 8 System
                 2. Visual Studio 2012 or above with Windows 8.0 SDK
                 
 For Compiling the code After you download the project as a zip file, unzip it and open the solution file .sln present in the folder.
 
-<b>For Building a .xap file and running the App on a device or an emulator :</b>
-1. Open the project in Visual Studio 2012(or above), by double clicking the .sln file
-2. In the toolbar select either the device plugged in(Windows Phone 8/8.1) or the emulators present.
-3. Click on deploy solution in Build toolbar.
-4. Also, the .xap file can be deployed to the device using the Application "Windows Phone Application Deployment 8.0".
+ABOUT THE APP :
 
-<b>ABOUT THE APP</b> :
-
-The App primarily fetches the phone current location, by making use of <b>GeoLocator API</b> of Windows Phone 8, and displays the location coordinates onto the screen.
+The App primarily fetches the phone current location, by making use of GeoLocator API of Windows Phone 8, and displays the location coordinates onto the screen.
 For first time, App Activation : The coordinates are printed on the screen and also are sent to a server in the form of POST call using HttpWebRequest.
-If the user presses the start button on phone or the App goes into the Background, App`s <b>"RunningInBackground"</b> event gets fired which makes the Http Call again.
+If the user presses the start button on phone or the App goes into the Background, App`s "RunningInBackground" event gets fired which makes the Http Call again.
 Also while in the App, the user has an option to submit the phone`s location using a SUBMIT Button.
 
-<b>ABOUT THE CODE :</b>
+ABOUT THE CODE :
 
 The code has been designed keeping in mind the MVVM design pattern for Windows Phone 8.
 
@@ -38,26 +32,11 @@ MainPage.xaml.cs : This file contains the code behind of the screen i.e It has m
 3. ViewModel
 ViewModel class acts as an interface between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them.
 
-4.Utilities
-This folder contains classes like Constanst, RelativeTimeConvertor, HttpServiceRequestClass for modularizing the code.
 
-5. For Data Persistance, IsolatedStorsgeSettings is being used, which stores data in the form of key-value pair and has an Application scope.
 
-6. Code Logic :
-a. When the user selects the App from Phones Start Page, the App.xaml.cs is called, which fires its Application_Activated event.
-This further takes the control to the very first page of the Application frame, here it is "MainPage.xaml,cs"
-Next the MainPage.xaml.cs constructor is called and on its loading, its OnNavigatedTo event is fired.
-In the OnNavigatedTo, It fetches the data stored in IsolatedStorageSettings.
-i) If it is the first time, then this object would be null and default values would be printed to the screen.
-Also the FetchLocation function is called to fetch the coordinates of device. After which the SendLocation functionality is called.
-ii) If it is not the first time, the data fetched from IsolatedStorageSettings is popluated to the screen.
-Also the fetchLocation function is called to check if new coordinates are present.
 
-Further, if the user presses the start button, and the App goes into Background, first the pages OnNavigatedFrom event is fired which stores the current data displayed on screen to the IsolatedStorageSettings. Then it calls the SubmitLocation 
-function.
 
-Also while in the App, if the user clicks on submit button the SendLocation function is called.
-The RelativeTimeUpdate String that we see below the Submit button, is calculated from difference of the submitTime, that was stored when a SendLocation was initiated, aqnd the DateTime.Now.
 
+P.S : The work is still in progress
 
                 

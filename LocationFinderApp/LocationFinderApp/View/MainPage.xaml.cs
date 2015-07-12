@@ -17,6 +17,7 @@ using System.Windows.Threading;
 using Newtonsoft.Json;
 using LocationFinderApp.ViewModels;
 using System.IO.IsolatedStorage;
+using System.Threading;
 
 namespace LocationFinderApp
 {
@@ -35,12 +36,16 @@ namespace LocationFinderApp
             InitializeComponent();            
         }
 
-
+        
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             base.OnBackKeyPress(e);
         }
 
+        /// <summary>
+        /// Event when page is Navigated From
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -51,6 +56,10 @@ namespace LocationFinderApp
            
         }
 
+        /// <summary>
+        /// Event when page is Navigated To from App.xaml page
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             newUser = viewModel.GetUserSavedData();
@@ -77,32 +86,63 @@ namespace LocationFinderApp
             
         }
 
+        /// <summary>
+        /// Function to send coordinates to Http call
+        /// </summary>
         public void sendLocation()
         {
-            if(Lat.Text != String.Empty && Long.Text != String.Empty)
+            try
             {
-                string response = viewModel.sendLocationData();
-                lastSubmittedDateTime = DateTime.Now;
-                getRelativeLastSubmittedTime(DateTime.Now);
-               
+                if (Lat.Text != String.Empty && Long.Text != String.Empty)
+                {
+                    string response = viewModel.sendLocationData();
+                    lastSubmittedDateTime = DateTime.Now;
+                    getRelativeLastSubmittedTime(DateTime.Now);
+
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             
         }   
 
       
+        /// <summary>
+        /// Function to fetch Location coordinates to be printed on screen
+        /// </summary>
+        /// <param name="isFirstTime"></param>
         public async void fetchLocation(bool isFirstTime)
         {
+            try
+            {
 
-            User user = await viewModel.fetchLocation(isFirstTime);
+                User user = await viewModel.fetchLocation(isFirstTime);
+                
+                if (user != null)
+                {
+                        Lat.Text = user.location.Latitude;
+                        Long.Text = user.location.Longitude;
+                        lastSubmitted_txt_blk.Text = user.lastUpdatedOn;
+                    
+                }
            
-            Lat.Text = user.location.Latitude;
-            Long.Text = user.location.Longitude;
-            lastSubmitted_txt_blk.Text = user.lastUpdatedOn;
-           // getRelativeLastSubmittedTime(DateTime.Now);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             
         }
 
+        /// <summary>
+        /// Callback for submit button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Submit_Button_Click(object sender, RoutedEventArgs e)
         {
             //Call to make a http post to server
@@ -112,6 +152,11 @@ namespace LocationFinderApp
            // getRelativeLastSubmittedTime(DateTime.Now);
         }
 
+        /// <summary>
+        /// Function to handle the text in texbox change event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = sender as TextBox;
@@ -121,6 +166,9 @@ namespace LocationFinderApp
             }
         }
 
+        /// <summary>
+        /// Save User info present on screen
+        /// </summary>
         private void saveUserInfo()
         {
             User newUser = new User();
@@ -133,6 +181,10 @@ namespace LocationFinderApp
             viewModel.saveUserData(newUser);
         }
 
+        /// <summary>
+        /// Get Relative time from last submission time till now
+        /// </summary>
+        /// <param name="startTime"></param>
         private void getRelativeLastSubmittedTime(DateTime startTime)
         {
            var time =  viewModel.getLastSubmittedTime(startTime);

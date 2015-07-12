@@ -9,6 +9,7 @@ using System.IO.IsolatedStorage;
 using Windows.Devices.Geolocation;
 using LocationFinderApp.Utilities;
 using System.Net;
+using System.Windows.Threading;
 
 
 namespace LocationFinderApp.ViewModels
@@ -16,15 +17,17 @@ namespace LocationFinderApp.ViewModels
     public class ViewModel
     {
         private IsolatedStorageSettings userSettings = IsolatedStorageSettings.ApplicationSettings;
-       // PersistantDataStorage persistantDataStorageObj = new PersistantDataStorage();
 
         public bool isLastSubmitted = false;
         public bool isFirstTime;
         DateTime submissionTime;
         User newUser = new User();
         HttpServiceRequestClass req = new HttpServiceRequestClass();
-        Location location = new Location();
 
+        /// <summary>
+        /// Function to fetch userSavedData from the IsolatedStorageSettings
+        /// </summary>
+        /// <returns></returns>
         public User GetUserSavedData()
         {
            if(userSettings.Count > 0)
@@ -34,19 +37,18 @@ namespace LocationFinderApp.ViewModels
                    newUser = (User)userSettings["NewUser"];
                    return newUser;
                }
-               else
-               {
-                   return null;
-               }
-
+               
            }
-            else
-           {
-               return null;
-           }
+            
+           return null;
+          
             
         }
 
+        /// <summary>
+        /// Function to save userData to the IsolatedStorageSettings
+        /// </summary>
+        /// <param name="saveNewUser"></param>
         public void saveUserData(User saveNewUser)
         {
             newUser = saveNewUser;
@@ -59,13 +61,16 @@ namespace LocationFinderApp.ViewModels
                 userSettings.Add("NewUser", saveNewUser);
             }
            
-            //persistantDataStorageObj.saveUserDetails(newUser);
         }
 
+        /// <summary>
+        /// Function to fetch location using GeoLocation API
+        /// </summary>
+        /// <param name="checkIfFirstTime"></param>
+        /// <returns></returns>
         public async Task<User> fetchLocation(bool checkIfFirstTime)
         {
             isFirstTime = checkIfFirstTime;
-           // newUser = new User();
             Geolocator geoLocator = new Geolocator();
             geoLocator.DesiredAccuracy = PositionAccuracy.High;
             geoLocator.MovementThreshold = 100;
@@ -97,12 +102,16 @@ namespace LocationFinderApp.ViewModels
             
         }
 
+        /// <summary>
+        /// callback when position changed event is fired by the Geolocation api
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void geoLocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
             if (App.isRunningInBackground)
             {
                 Microsoft.Phone.Shell.ShellToast toast = new Microsoft.Phone.Shell.ShellToast();
-                // TODO : Call Submit button functionality
                 
             }
             else
@@ -117,7 +126,11 @@ namespace LocationFinderApp.ViewModels
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Send location function initiates the 
+        /// </summary>
+        /// <returns></returns>
         public string sendLocationData()
         {
             isLastSubmitted = true;
@@ -187,7 +200,11 @@ namespace LocationFinderApp.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Calculate the relative time from last submission
+        /// </summary>
+        /// <param name="submittedTime"></param>
+        /// <returns></returns>
         public string getLastSubmittedTime(DateTime submittedTime)
         {
             if(isLastSubmitted)
