@@ -74,3 +74,41 @@ C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-maste
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Debug\ProjectArchitectures.txt
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Debug\MDILProjectFiles.xml
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Debug\XapCacheFile.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\ApplicationIcon.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Assets\Tiles\IconicTileSmall.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp.pdb
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\resources.pri
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp.build.appxrecipe
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Properties\WMAppManifest.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\AppManifest.xaml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\LocationFinderApp_Debug_AnyCPU.xap
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Debug\Newtonsoft.Json.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.csprojResolveAssemblyReference.cache
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\App.g.cs
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\View\MainPage.g.cs
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.g.resources
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.Resources.AppResources.resources
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.csproj.GenerateResource.Cache
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\LocationFinderApp.pdb
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\priconfig.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\priconfig.xml.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\layout.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\layout.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\resources.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\resources.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\pri.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\pri.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\qualifiers.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\qualifiers.txt.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\ProjectArchitectures.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\MDILProjectFiles.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Debug\XapCacheFile.xml

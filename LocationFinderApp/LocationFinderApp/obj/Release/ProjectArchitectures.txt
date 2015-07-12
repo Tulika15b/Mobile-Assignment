@@ -1,1 +1,1 @@
-C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\LocationFinderApp.csproj;neutral
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\LocationFinderApp.csproj;neutral

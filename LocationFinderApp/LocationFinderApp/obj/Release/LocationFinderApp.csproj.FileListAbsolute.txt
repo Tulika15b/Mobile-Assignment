@@ -36,3 +36,41 @@ C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-maste
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Release\XapCacheFile.xml
 C:\Users\gur32587\Downloads\Mobile-Assignment-master (1)\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.csprojResolveAssemblyReference.cache
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\ApplicationIcon.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\Tiles\FlipCycleTileLarge.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\Tiles\FlipCycleTileMedium.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\Tiles\FlipCycleTileSmall.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\Tiles\IconicTileMediumLarge.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Assets\Tiles\IconicTileSmall.png
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp.pdb
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\resources.pri
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\AppxManifest.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp.build.appxrecipe
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Properties\WMAppManifest.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\AppManifest.xaml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp_Release_AnyCPU.xap
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Newtonsoft.Json.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Newtonsoft.Json.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.csprojResolveAssemblyReference.cache
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\App.g.cs
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\View\MainPage.g.cs
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.g.resources
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.Resources.AppResources.resources
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.csproj.GenerateResource.Cache
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.dll
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.pdb
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\priconfig.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\priconfig.xml.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\layout.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\layout.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\resources.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\resources.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\pri.resfiles
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\pri.resfiles.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\qualifiers.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\qualifiers.txt.intermediate
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\ProjectArchitectures.txt
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml
+C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\XapCacheFile.xml

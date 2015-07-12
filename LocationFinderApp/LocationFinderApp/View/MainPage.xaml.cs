@@ -28,6 +28,7 @@ namespace LocationFinderApp
         DateTime lastSubmittedDateTime;
         bool isFirstTime = true;
         User newUser = new User();
+        bool tracking = false;
 
 
         // Constructor
@@ -36,6 +37,21 @@ namespace LocationFinderApp
             InitializeComponent();            
         }
 
+        public void SetProgressIndicator(bool value, string progressIndicatorText)
+        {
+            SystemTray.ProgressIndicator = new ProgressIndicator();
+            SystemTray.ProgressIndicator.IsIndeterminate = value;
+            SystemTray.ProgressIndicator.IsVisible = value;
+            if (value == true)
+            {
+                SystemTray.ProgressIndicator.Text = progressIndicatorText;
+            }
+
+            else
+            {
+                
+            }
+        }
         
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
@@ -87,56 +103,86 @@ namespace LocationFinderApp
         }
 
         /// <summary>
+        /// Function to fetch Location coordinates to be printed on screen
+        /// </summary>
+        /// <param name="isFirstTime"></param>
+        
+        public void fetchLocation(bool isFirstTime)
+        {
+
+            // newUser = new User();
+            Dispatcher.BeginInvoke(() =>
+            {
+                SetProgressIndicator(true, "Fetching Location");
+            });
+            Geolocator geoLocator = new Geolocator();
+
+            if (!tracking)
+            {
+                geoLocator.DesiredAccuracy = PositionAccuracy.High;
+                geoLocator.MovementThreshold = 1;
+                geoLocator.PositionChanged += geoLocator_PositionChanged;
+                geoLocator.StatusChanged += geoLocator_StatusChanged;
+                tracking = true;
+
+            }
+            else
+            {
+                geoLocator.PositionChanged -= geoLocator_PositionChanged;
+                geoLocator.StatusChanged -= geoLocator_StatusChanged;
+                geoLocator = null;
+
+                tracking = false;
+            }
+
+        }
+
+        void geoLocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+
+        }
+
+        void geoLocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            if (!(App.isRunningInBackground))
+            {
+
+                //App in activated or resumed state
+
+                Dispatcher.BeginInvoke(() =>
+                {
+                    Lat.Text = args.Position.Coordinate.Latitude.ToString("0.00");
+                    Long.Text = args.Position.Coordinate.Longitude.ToString("0.00");
+                    SetProgressIndicator(false, null);
+                    
+                    if (isFirstTime)
+                    {
+                        sendLocation();
+                        lastSubmittedDateTime = DateTime.Now;
+                        getRelativeLastSubmittedTime(lastSubmittedDateTime);
+                    
+                    }
+                });
+
+            }
+        }
+
+        /// <summary>
         /// Function to send coordinates to Http call
         /// </summary>
         public void sendLocation()
         {
-            try
-            {
-                if (Lat.Text != String.Empty && Long.Text != String.Empty)
-                {
-                    string response = viewModel.sendLocationData();
-                    lastSubmittedDateTime = DateTime.Now;
-                    getRelativeLastSubmittedTime(DateTime.Now);
+            Location loc = new Location();
+            loc.Latitude = Lat.Text;
+            loc.Longitude = Long.Text;
+            string response = viewModel.sendLocationData(loc);
+            lastSubmittedDateTime = DateTime.Now;
+            getRelativeLastSubmittedTime(DateTime.Now);
 
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-            
-        }   
+        }  
 
       
-        /// <summary>
-        /// Function to fetch Location coordinates to be printed on screen
-        /// </summary>
-        /// <param name="isFirstTime"></param>
-        public async void fetchLocation(bool isFirstTime)
-        {
-            try
-            {
-
-                User user = await viewModel.fetchLocation(isFirstTime);
-                
-                if (user != null)
-                {
-                        Lat.Text = user.location.Latitude;
-                        Long.Text = user.location.Longitude;
-                        lastSubmitted_txt_blk.Text = user.lastUpdatedOn;
-                    
-                }
-           
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            
-        }
+       
 
         /// <summary>
         /// Callback for submit button click

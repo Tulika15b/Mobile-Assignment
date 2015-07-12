@@ -63,91 +63,30 @@ namespace LocationFinderApp.ViewModels
            
         }
 
-        /// <summary>
-        /// Function to fetch location using GeoLocation API
-        /// </summary>
-        /// <param name="checkIfFirstTime"></param>
-        /// <returns></returns>
-        public async Task<User> fetchLocation(bool checkIfFirstTime)
-        {
-            isFirstTime = checkIfFirstTime;
-            Geolocator geoLocator = new Geolocator();
-            geoLocator.DesiredAccuracy = PositionAccuracy.High;
-            geoLocator.MovementThreshold = 100;
-            geoLocator.PositionChanged += geoLocator_PositionChanged;
-            geoLocator.StatusChanged += geoLocator_StatusChanged;
-            
-            try
-            {
-                Geoposition geoPosition = await geoLocator.GetGeopositionAsync(
-                         maximumAge: TimeSpan.FromMinutes(5),
-                         timeout: TimeSpan.FromSeconds(10)
-                );
-
-                newUser.location.Latitude = geoPosition.Coordinate.Point.Position.Latitude.ToString();
-                newUser.location.Longitude = geoPosition.Coordinate.Point.Position.Longitude.ToString();
-
-            }
-            catch(Exception ex)
-            {
-                newUser.errorMsg = ex.Message;
-                newUser.errorCode = Constants.ERROR;
-            }
-
-            return newUser;           
-        }
-
-        void geoLocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
-        {
-            
-        }
-
-        /// <summary>
-        /// callback when position changed event is fired by the Geolocation api
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        void geoLocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
-        {
-            if (App.isRunningInBackground)
-            {
-                Microsoft.Phone.Shell.ShellToast toast = new Microsoft.Phone.Shell.ShellToast();
-                
-            }
-            else
-            {
-                //App in activated or resumed state
-                newUser.location.Latitude = args.Position.Coordinate.Latitude.ToString("0.00");
-                newUser.location.Longitude = args.Position.Coordinate.Longitude.ToString("0.00");
-                if(isFirstTime)
-                {
-                    sendLocationData();
-                      getLastSubmittedTime(DateTime.Now);
-                }
-            }
-        }
-        
+               
         /// <summary>
         /// Send location function initiates the 
         /// </summary>
         /// <returns></returns>
-        public string sendLocationData()
+        public string sendLocationData(Location location)
         {
             isLastSubmitted = true;
-           // submissionTime = DateTime.Now;
+            newUser.location.Latitude = location.Latitude;
+            newUser.location.Longitude = location.Longitude;
+            // submissionTime = DateTime.Now;
 
             //Create Http Request
             HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
-            
+
             clientReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), clientReq);
-            if(newUser.errorMsg != null)
+            if (newUser.errorMsg != null)
             {
-                return Constants.SUCCESS;
+                return Constants.ERROR;
             }
             else
             {
-                return Constants.ERROR;
-            }          
+                return Constants.SUCCESS;
+            }
         }
 
         
