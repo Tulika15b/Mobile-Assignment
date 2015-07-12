@@ -8,6 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>091556d6-3603-4595-9cca-9b287b82c2b9</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\gur32587\documents\visual studio 2013\Projects\LocationFinderApp\LocationFinderApp\obj\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\gur32587\Downloads\Mobile-Assignment-master %281%29\Mobile-Assignment-master\LocationFinderApp\LocationFinderApp\Bin\Debug\AppxManifest.xml">
