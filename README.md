@@ -41,9 +41,9 @@ ViewModel class acts as an interface between the DataModel and View. It provides
 4.Utilities
 This folder contains classes like Constanst, RelativeTimeConvertor, HttpServiceRequestClass for modularizing the code.
 
-5. For Data Persistance, IsolatedStorsgeSettings is being used, which stores data in the form of key-value pair and has an Application scope.
+5.For Data Persistance, IsolatedStorsgeSettings is being used, which stores data in the form of key-value pair and has an Application scope.
 
-6. Code Logic :
+6.Code Logic :
 a. When the user selects the App from Phones Start Page, the App.xaml.cs is called, which fires its Application_Activated event.
 This further takes the control to the very first page of the Application frame, here it is "MainPage.xaml,cs"
 Next the MainPage.xaml.cs constructor is called and on its loading, its OnNavigatedTo event is fired.
