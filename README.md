@@ -31,11 +31,11 @@ Location class - Contains the latitude and longitude as string. It is also a mem
 
 The classes make use of INotifyPropertyChanged which informs the controls, which bind to those properties, that the properties have been changed.
 
-2. View
+2.View
 MainPage.xaml : It contains the screen layout of the App
 MainPage.xaml.cs : This file contains the code behind of the screen i.e It has methods to bind the Location details, takes care of username text change, starts the submit functionality, Contains Page events like OnNavigatedTo, OnNavigatedFrom, saving persistant data(function called when page state  navigates from OnNavigatedFrom).
 
-3. ViewModel
+3.ViewModel
 ViewModel class acts as an interface between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them.
 
 4.Utilities
