@@ -94,8 +94,8 @@ namespace LocationFinderApp
             }
            else
            {
-               Lat.Text = "0.0";
-               Long.Text = "0.0";
+               Lat.Text = "0.0000";
+               Long.Text = "0.0000";
                fetchLocation(isFirstTime);
                
            }
@@ -151,8 +151,8 @@ namespace LocationFinderApp
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    Lat.Text = args.Position.Coordinate.Latitude.ToString("0.00");
-                    Long.Text = args.Position.Coordinate.Longitude.ToString("0.00");
+                    Lat.Text = args.Position.Coordinate.Latitude.ToString("0.0000");
+                    Long.Text = args.Position.Coordinate.Longitude.ToString("0.0000");
                     SetProgressIndicator(false, null);
                     
                     if (isFirstTime)
