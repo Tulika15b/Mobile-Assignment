@@ -98,7 +98,7 @@ namespace LocationFinderApp
         {
             isRunningInBackground = true;
 
-            ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocation();
+           // ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocation();
 
         }
 
