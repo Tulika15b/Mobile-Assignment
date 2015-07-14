@@ -20,7 +20,6 @@ namespace LocationFinderApp.ViewModels
 
         public bool isLastSubmitted = false;
         public bool isFirstTime;
-        DateTime submissionTime;
         User newUser = new User();
         HttpServiceRequestClass req = new HttpServiceRequestClass();
 
@@ -73,7 +72,6 @@ namespace LocationFinderApp.ViewModels
             isLastSubmitted = true;
             newUser.location.Latitude = location.Latitude;
             newUser.location.Longitude = location.Longitude;
-            // submissionTime = DateTime.Now;
 
             //Create Http Request
             HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
@@ -146,11 +144,11 @@ namespace LocationFinderApp.ViewModels
         /// <returns></returns>
         public string getLastSubmittedTime(DateTime submittedTime)
         {
-            if(isLastSubmitted)
-            {
+           
+            var nowTime = DateTime.Now;
                 var lastSubmittedTime = submittedTime;
                 newUser.LastUpdatedOn = RelativeTimeConvertor.calculateRelativeTime(lastSubmittedTime);
-            }
+           
             return newUser.LastUpdatedOn;
         }
         

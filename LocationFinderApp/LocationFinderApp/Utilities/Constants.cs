@@ -17,6 +17,7 @@ namespace LocationFinderApp.Utilities
         public const string ERROR = "ERROR";
         public const string SUCCESS = "SUCCESS";
         public const string LOCATION = "LOCATION";
+        public const string SUBMIT_MSG = "Location submitted successfully!!";
 
     }
 }

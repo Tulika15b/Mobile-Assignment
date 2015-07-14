@@ -29,12 +29,13 @@ namespace LocationFinderApp
         bool isFirstTime = true;
         User newUser = new User();
         bool tracking = false;
-
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         // Constructor
         public MainPage()
         {
-            InitializeComponent();            
+            InitializeComponent();      
+      
         }
 
         public void SetProgressIndicator(bool value, string progressIndicatorText)
@@ -45,11 +46,6 @@ namespace LocationFinderApp
             if (value == true)
             {
                 SystemTray.ProgressIndicator.Text = progressIndicatorText;
-            }
-
-            else
-            {
-                
             }
         }
         
@@ -88,8 +84,11 @@ namespace LocationFinderApp
                 Lat.Text = newUser.location.Latitude;
                 Long.Text = newUser.location.Longitude;
                 fetchLocation(isFirstTime);
-                lastSubmitted_txt_blk.Text = viewModel.getLastSubmittedTime(newUser.LastSubmittedDateTime);
-                LocationUserName.Text = newUser.userName;
+
+                //Calc relative time from last Submitted date and time, that was saved in the IsolatedStorage file
+                lastSubmittedDateTime = newUser.LastSubmittedDateTime;
+                getRelativeLastSubmittedTime(lastSubmittedDateTime);
+                LocationUserName.Text = newUser.userName;               
 
             }
            else
@@ -98,8 +97,15 @@ namespace LocationFinderApp
                Long.Text = "0.0000";
                fetchLocation(isFirstTime);
                
-           }
+           }           
             
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            // Updating the Label which displays the current second
+            getRelativeLastSubmittedTime(lastSubmittedDateTime);
+
         }
 
         /// <summary>
@@ -109,7 +115,6 @@ namespace LocationFinderApp
         
         public void fetchLocation(bool isFirstTime)
         {
-
             // newUser = new User();
             Dispatcher.BeginInvoke(() =>
             {
@@ -151,16 +156,14 @@ namespace LocationFinderApp
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    Lat.Text = args.Position.Coordinate.Latitude.ToString("0.0000");
-                    Long.Text = args.Position.Coordinate.Longitude.ToString("0.0000");
+                    Lat.Text = args.Position.Coordinate.Point.Position.Latitude.ToString("0.0000");
+                    Long.Text = args.Position.Coordinate.Point.Position.Longitude.ToString("0.0000");
                     SetProgressIndicator(false, null);
                     
                     if (isFirstTime)
                     {
+                        SetProgressIndicator(false, null);
                         sendLocation();
-                        lastSubmittedDateTime = DateTime.Now;
-                        getRelativeLastSubmittedTime(lastSubmittedDateTime);
-                    
                     }
                 });
 
@@ -175,13 +178,27 @@ namespace LocationFinderApp
             Location loc = new Location();
             loc.Latitude = Lat.Text;
             loc.Longitude = Long.Text;
-            string response = viewModel.sendLocationData(loc);
+
             lastSubmittedDateTime = DateTime.Now;
             getRelativeLastSubmittedTime(DateTime.Now);
 
-        }  
+            if (App.isRunningInBackground)
+            {
+                
+                ShellToast toast = new ShellToast();
+                toast.Title = "Locater App";
+                toast.Content = String.Format("Location submitted at !!" + lastSubmittedDateTime.ToString());
+                toast.Show();
 
-      
+
+            }
+
+
+            string response = viewModel.sendLocationData(loc);
+
+            MessageBox.Show(Constants.SUBMIT_MSG);
+
+        }  
        
 
         /// <summary>
@@ -193,9 +210,7 @@ namespace LocationFinderApp
         {
             //Call to make a http post to server
             sendLocation();
-            lastSubmittedDateTime = DateTime.Now;
-
-           // getRelativeLastSubmittedTime(DateTime.Now);
+            
         }
 
         /// <summary>
@@ -233,7 +248,13 @@ namespace LocationFinderApp
         /// <param name="startTime"></param>
         private void getRelativeLastSubmittedTime(DateTime startTime)
         {
+            lastSubmittedDateTime = startTime;
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Start();
            var time =  viewModel.getLastSubmittedTime(startTime);
+           
            lastSubmitted_txt_blk.Text = time;
         }
 
