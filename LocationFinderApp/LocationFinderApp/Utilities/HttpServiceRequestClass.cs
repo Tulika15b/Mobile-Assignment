@@ -17,7 +17,7 @@ namespace LocationFinderApp.Utilities
             HttpWebRequest clientReq = WebRequest.CreateHttp(new Uri(baseURL));
 
             clientReq.AllowReadStreamBuffering = false;
-            clientReq.ContentType = "application/json";
+            clientReq.ContentType = "application/x-www-form-urlencoded";
             clientReq.Method = "POST";
             NetworkCredential cred = new NetworkCredential(Constants.CREDS_USERNAME, Constants.CREDS_PASSWORD);
             clientReq.Credentials = cred;
@@ -30,16 +30,25 @@ namespace LocationFinderApp.Utilities
 
             HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
 
-            // End the operation
-            Stream postStream = request.EndGetRequestStream(asynchronousResult);
+            try
+            {
+                // End the operation
+                Stream postStream = request.EndGetRequestStream(asynchronousResult);
 
+                // Convert the string into a byte array. 
+                byte[] byteArray = Encoding.UTF8.GetBytes(postData);
 
-            // Convert the string into a byte array. 
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+                // Write to the request stream.
 
-            // Write to the request stream.
-            await postStream.WriteAsync(byteArray, 0, postData.Length);
-            postStream.Close();
+                await postStream.WriteAsync(byteArray, 0, postData.Length);
+                postStream.Close();
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
 
             return request;
         }
