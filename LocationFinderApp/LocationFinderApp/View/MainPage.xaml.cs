@@ -30,6 +30,7 @@ namespace LocationFinderApp
         User newUser = new User();
         bool tracking = false;
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        bool alreadyInStack = true;
 
         // Constructor
         public MainPage()
@@ -38,6 +39,11 @@ namespace LocationFinderApp
       
         }
 
+        /// <summary>
+        /// Function to set the progress indicator on screen
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="progressIndicatorText"></param>
         public void SetProgressIndicator(bool value, string progressIndicatorText)
         {
             SystemTray.ProgressIndicator = new ProgressIndicator();
@@ -74,30 +80,45 @@ namespace LocationFinderApp
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            newUser = viewModel.GetUserSavedData();
-           
-            if(newUser != null)
+            if (alreadyInStack)
             {
-               //this implies it is not the first time of app
-               //Hence read the saved data and display on Screen
-                isFirstTime = false;
-                Lat.Text = newUser.location.Latitude;
-                Long.Text = newUser.location.Longitude;
-                fetchLocation(isFirstTime);
+                newUser = viewModel.GetUserSavedData();
+                DateTime defaultDT = new DateTime();
 
-                //Calc relative time from last Submitted date and time, that was saved in the IsolatedStorage file
-                lastSubmittedDateTime = newUser.LastSubmittedDateTime;
-                getRelativeLastSubmittedTime(lastSubmittedDateTime);
-                LocationUserName.Text = newUser.userName;               
+                if (newUser != null)
+                {
+                    //this implies it is not the first time of app
+                    //Hence read the saved data and display on Screen
+                    isFirstTime = false;
+                    Lat.Text = newUser.location.Latitude;
+                    Long.Text = newUser.location.Longitude;
+                    fetchLocation(isFirstTime);
 
+                    //Calc relative time from last Submitted date and time, that was saved in the IsolatedStorage file
+                    DateTime backgroundSubmissionDT = new DateTime();
+                    backgroundSubmissionDT = viewModel.getLastSubmittedTimeInBackground();
+                    if (backgroundSubmissionDT.Equals(defaultDT))
+                    {
+                        lastSubmittedDateTime = newUser.LastSubmittedDateTime;
+                    }
+                    else
+                    {
+                        lastSubmittedDateTime = backgroundSubmissionDT;
+                    }
+                    getRelativeLastSubmittedTime(lastSubmittedDateTime);
+                    LocationUserName.Text = newUser.userName;
+
+                }
+                else
+                {
+                    Lat.Text = "0.0000";
+                    Long.Text = "0.0000";
+                    fetchLocation(isFirstTime);
+
+                }           
             }
-           else
-           {
-               Lat.Text = "0.0000";
-               Long.Text = "0.0000";
-               fetchLocation(isFirstTime);
-               
-           }           
+            alreadyInStack = false;
+           
             
         }
 
@@ -125,7 +146,7 @@ namespace LocationFinderApp
             if (!tracking)
             {
                 geoLocator.DesiredAccuracy = PositionAccuracy.High;
-                geoLocator.MovementThreshold = 10;
+                geoLocator.MovementThreshold = 100;
                 geoLocator.PositionChanged += geoLocator_PositionChanged;
                 geoLocator.StatusChanged += geoLocator_StatusChanged;
                 tracking = true;
@@ -160,13 +181,18 @@ namespace LocationFinderApp
                     Long.Text = args.Position.Coordinate.Point.Position.Longitude.ToString("0.0000");
                     SetProgressIndicator(false, null);
                     
-                    if (isFirstTime)
-                    {
-                        SetProgressIndicator(false, null);
-                        sendLocation();
-                    }
+                    
                 });
 
+                Dispatcher.BeginInvoke(() =>
+                    {
+                        if (isFirstTime)
+                        {
+                            SetProgressIndicator(false, null);
+                            sendLocation();
+                        }
+                    });
+               
             }
         }
 
@@ -184,17 +210,17 @@ namespace LocationFinderApp
 
             if (App.isRunningInBackground)
             {
-                
+                viewModel.saveLastSubmittedTimeInBackground(lastSubmittedDateTime);
                 ShellToast toast = new ShellToast();
                 toast.Title = "Locater App";
                 toast.Content = String.Format("Location submitted at !!" + lastSubmittedDateTime.ToString());
                 toast.Show();
-
+                alreadyInStack = true;
 
             }
 
 
-            string response = viewModel.sendLocationData(loc);
+            viewModel.sendLocationData(loc);
 
             MessageBox.Show(Constants.SUBMIT_MSG);
 

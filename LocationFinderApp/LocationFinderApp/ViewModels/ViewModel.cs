@@ -23,6 +23,8 @@ namespace LocationFinderApp.ViewModels
         User newUser = new User();
         HttpServiceRequestClass req = new HttpServiceRequestClass();
 
+
+        #region ISOLATEDSTORAGE_SETTINGS_RELATED
         /// <summary>
         /// Function to fetch userSavedData from the IsolatedStorageSettings
         /// </summary>
@@ -45,6 +47,44 @@ namespace LocationFinderApp.ViewModels
         }
 
         /// <summary>
+        /// Function to save the Last submission time when location submitted in background
+        /// </summary>
+        /// <param name="timeNow"></param>
+        public void saveLastSubmittedTimeInBackground(DateTime timeNow)
+        {
+            if(userSettings.Count > 0)
+            {
+                if(userSettings.Contains("lastSubmissionTime"))
+                {
+                    userSettings["lastSubmissionTime"] = timeNow;
+                }
+                else
+                {
+                    userSettings.Add("lastSubmissionTime", timeNow);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Function to get the last submitted time when the app submitted location in background
+        /// </summary>
+        /// <returns></returns>
+        public DateTime getLastSubmittedTimeInBackground()
+        {
+            DateTime inBackgroundLocationSubmissionTime = new DateTime();
+            if (userSettings.Count > 0)
+            {
+                if (userSettings.Contains("lastSubmissionTime"))
+                {
+                   inBackgroundLocationSubmissionTime = (DateTime) userSettings["lastSubmissionTime"];
+                   userSettings.Remove("lastSubmissionTime");
+                }
+                
+            }
+            return inBackgroundLocationSubmissionTime;
+        }
+
+        /// <summary>
         /// Function to save userData to the IsolatedStorageSettings
         /// </summary>
         /// <param name="saveNewUser"></param>
@@ -61,13 +101,14 @@ namespace LocationFinderApp.ViewModels
             }
            
         }
+        #endregion
 
-               
+        #region SEND_LOCATION
         /// <summary>
         /// Send location function initiates the 
         /// </summary>
         /// <returns></returns>
-        public string sendLocationData(Location location)
+        public void sendLocationData(Location location)
         {
             isLastSubmitted = true;
             newUser.location.Latitude = location.Latitude;
@@ -77,14 +118,7 @@ namespace LocationFinderApp.ViewModels
             HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
 
             clientReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), clientReq);
-            if (newUser.errorMsg != null)
-            {
-                return Constants.ERROR;
-            }
-            else
-            {
-                return Constants.SUCCESS;
-            }
+             
         }
 
         
@@ -136,6 +170,8 @@ namespace LocationFinderApp.ViewModels
                 newUser.errorMsg = ex.Message;
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Calculate the relative time from last submission
