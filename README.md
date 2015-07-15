@@ -36,7 +36,7 @@ MainPage.xaml : It contains the screen layout of the App
 MainPage.xaml.cs : This file contains the code behind of the screen i.e It has methods to bind the Location details, takes care of username text change, starts the submit functionality, Contains Page events like OnNavigatedTo, OnNavigatedFrom, saving persistant data(function called when page state  navigates from OnNavigatedFrom).
 
 3.ViewModel
-ViewModel class acts as an interface between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them.
+ViewModel class acts as an layer between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them. It contains code for saving data to and fetching data from IsolatedStorageSettings. It also creates Http Request and handles the Http response.
 
 4.Utilities
 This folder contains classes like Constanst, RelativeTimeConvertor, HttpServiceRequestClass for modularizing the code.
@@ -51,13 +51,15 @@ In the OnNavigatedTo, It fetches the data stored in IsolatedStorageSettings.
 i) If it is the first time, then this object would be null and default values would be printed to the screen.
 Also the FetchLocation function is called to fetch the coordinates of device. After which the SendLocation functionality is called.
 ii) If it is not the first time, the data fetched from IsolatedStorageSettings is popluated to the screen.
-Also the fetchLocation function is called to check if new coordinates are present.
+Also the fetchLocation function is called to check if new coordinates are present. For showing the last submission relative time, it first checks for the lastSubmittedDateTime in background, if that doesn`t provide a default value that means the App came from background and hence the relative time is calculated from this DateTime.
 
 Further, if the user presses the start button, and the App goes into Background, first the pages OnNavigatedFrom event is fired which stores the current data displayed on screen to the IsolatedStorageSettings. Then it calls the SubmitLocation 
 function.
 
 Also while in the App, if the user clicks on submit button the SendLocation function is called.
-The RelativeTimeUpdate String that we see below the Submit button, is calculated from difference of the submitTime, that was stored when a SendLocation was initiated, aqnd the DateTime.Now.
+
+The RelativeTimeUpdate String that we see below the Submit button, is calculated from difference of the submitTime, that was stored when a SendLocation was initiated, and the DateTime.Now. 
+
 
 
                 
