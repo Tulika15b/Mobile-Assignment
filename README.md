@@ -38,7 +38,7 @@ MainPage.xaml.cs : This file contains the code behind of the screen i.e It has m
 3.ViewModel
 ViewModel class acts as an layer between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them. It contains code for saving data to and fetching data from IsolatedStorageSettings.
 
-4. App.xaml and App.xaml.cs :
+4.App.xaml and App.xaml.cs :
 It contains the PhoneApplication state events like Activated, Deactivated, Closing, isRunningInBackground, Launching.
 This is the first xaml page that gets hit when the App is loaded. For sending location when app moves in background, the isRunninginBackground event is changed to call the MainPage`s send Location function. Here a bool flag is also set to true so that further the App gets to know that the App is running in background.
 
