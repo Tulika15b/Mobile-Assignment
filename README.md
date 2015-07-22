@@ -36,14 +36,18 @@ MainPage.xaml : It contains the screen layout of the App
 MainPage.xaml.cs : This file contains the code behind of the screen i.e It has methods to bind the Location details, takes care of username text change, starts the submit functionality, Contains Page events like OnNavigatedTo, OnNavigatedFrom, saving persistant data(function called when page state  navigates from OnNavigatedFrom).
 
 3.ViewModel
-ViewModel class acts as an layer between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them. It contains code for saving data to and fetching data from IsolatedStorageSettings. It also creates Http Request and handles the Http response.
+ViewModel class acts as an layer between the DataModel and View. It provides the View classes with the data,associated with the Model classes, required to populate them. It contains code for saving data to and fetching data from IsolatedStorageSettings.
 
-4.Utilities
+4. App.xaml and App.xaml.cs :
+It contains the PhoneApplication state events like Activated, Deactivated, Closing, isRunningInBackground, Launching.
+This is the first xaml page that gets hit when the App is loaded. For sending location when app moves in background, the isRunninginBackground event is changed to call the MainPage`s send Location function. Here a bool flag is also set to true so that further the App gets to know that the App is running in background.
+
+5.Utilities
 This folder contains classes like Constanst, RelativeTimeConvertor, HttpServiceRequestClass for modularizing the code.
 
-5.For Data Persistance, IsolatedStorsgeSettings is being used, which stores data in the form of key-value pair and has an Application scope.
+6.For Data Persistance, IsolatedStorsgeSettings is being used, which stores data in the form of key-value pair and has an Application scope.
 
-6.Code Logic :
+7.Code Logic :
 a. When the user selects the App from Phones Start Page, the App.xaml.cs is called, which fires its Application_Activated event.
 This further takes the control to the very first page of the Application frame, here it is "MainPage.xaml,cs"
 Next the MainPage.xaml.cs constructor is called and on its loading, its OnNavigatedTo event is fired.
