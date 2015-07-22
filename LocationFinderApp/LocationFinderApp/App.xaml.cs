@@ -79,8 +79,8 @@ namespace LocationFinderApp
         private void Application_RunningInBackground(object sender, RunningInBackgroundEventArgs e)
         {
             isRunningInBackground = true;
-            
-           // ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocation();
+
+            ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocationData();
             
         }
 
@@ -96,10 +96,11 @@ namespace LocationFinderApp
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
-            isRunningInBackground = true;
-
-            ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocation();
-
+            if (!isRunningInBackground)
+            {
+                isRunningInBackground = true;
+                ((MainPage)(((System.Windows.Controls.ContentControl)(App.RootFrame)).Content)).sendLocationData();
+            }
         }
 
         // Code to execute when the application is closing (eg, user hit Back)

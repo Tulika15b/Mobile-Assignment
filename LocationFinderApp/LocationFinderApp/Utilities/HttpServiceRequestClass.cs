@@ -30,8 +30,6 @@ namespace LocationFinderApp.Utilities
 
             HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
 
-            try
-            {
                 // End the operation
                 Stream postStream = request.EndGetRequestStream(asynchronousResult);
 
@@ -43,11 +41,7 @@ namespace LocationFinderApp.Utilities
                 await postStream.WriteAsync(byteArray, 0, postData.Length);
                 postStream.Close();
                 
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            
            
 
             return request;
@@ -56,38 +50,29 @@ namespace LocationFinderApp.Utilities
         public async Task<string> receiveHttpResonse(HttpWebRequest request, IAsyncResult asynchronousResult)
         {
             string responseString = String.Empty;
-            try
+            HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
+            Stream streamResponse = response.GetResponseStream();
+            StreamReader streamRead = new StreamReader(streamResponse);
+            responseString = await streamRead.ReadToEndAsync();
+
+            //var userResp = JsonConvert.DeserializeObject<T>(responseString);
+            // Close the stream object
+
+            streamRead.Close();
+            streamResponse.Close();
+            // Release the HttpWebResponse
+            response.Close();
+
+            HttpStatusCode responseCode = response.StatusCode;
+            if (responseCode == HttpStatusCode.Created)
             {
-                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
-                Stream streamResponse = response.GetResponseStream();
-                StreamReader streamRead = new StreamReader(streamResponse);
-                responseString = await streamRead.ReadToEndAsync();
-
-                //var userResp = JsonConvert.DeserializeObject<T>(responseString);
-                // Close the stream object
-
-                streamRead.Close();
-                streamResponse.Close();
-                // Release the HttpWebResponse
-                response.Close();
-
-                HttpStatusCode responseCode = response.StatusCode;
-                if (responseCode == HttpStatusCode.Created)
-                {
-                    return Constants.SUCCESS;
-                }
-                else
-                {
-                    return Constants.ERROR;
-                }
-     
+                return Constants.SUCCESS;
             }
-            catch(WebException ex)
+            else
             {
-                Console.WriteLine(ex.Message);
+                return Constants.ERROR;
             }
 
-            return responseString;
         }
 
     }

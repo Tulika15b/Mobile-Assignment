@@ -1,6 +1,6 @@
-﻿<xapCache source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/14/2015 10:23:37 PM">
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\resources.pri" archivePath="resources.pri" lastWriteTime="7/14/2015 9:16:06 PM" />
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/14/2015 10:23:36 PM" />
+﻿<xapCache source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\LocationFinderApp_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="7/22/2015 10:27:29 PM">
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\resources.pri" archivePath="resources.pri" lastWriteTime="7/22/2015 10:10:35 PM" />
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\LocationFinderApp.dll" archivePath="LocationFinderApp.dll" lastWriteTime="7/22/2015 10:27:28 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="7/13/2015 12:57:50 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\BadgeLogo.png" archivePath="Assets\BadgeLogo.png" lastWriteTime="7/13/2015 12:57:50 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\Logo.png" archivePath="Assets\Logo.png" lastWriteTime="7/13/2015 12:57:50 PM" />
@@ -25,6 +25,6 @@
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="7/13/2015 12:57:50 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="7/13/2015 12:57:50 PM" />
   <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="7/14/2015 9:37:04 PM" />
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/14/2015 10:23:37 PM" />
-  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="7/14/2015 9:16:06 PM" />
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\obj\Release\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="7/22/2015 10:27:29 PM" />
+  <file source="C:\Users\gur32587\Documents\GitHub\Mobile-Assignment\LocationFinderApp\LocationFinderApp\Bin\Release\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="7/22/2015 10:10:35 PM" />
 </xapCache>

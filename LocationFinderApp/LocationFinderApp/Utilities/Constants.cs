@@ -19,5 +19,18 @@ namespace LocationFinderApp.Utilities
         public const string LOCATION = "LOCATION";
         public const string SUBMIT_MSG = "Location submitted successfully!!";
 
+        public const string SENDING_LOCATION = "Sending Location...";
+        public const string FETCHING_LOCATION = "Fetching Location...";
+        public const string DEFAULT_COORDINATE = "0.0000";
+
+        public const string TOAST_TITLE = "Locater App";
+        public const string TOAST_MSG = "Location submitted at ";
+
+        public const string ERR_CONNECTION_FAILED = "Please check your Internet connection !!";
+        public const string ERR_CONNECTION_TIMEOUT = "Connection with server timedOut, please try again";
+        public const string ERR_REQUEST_CANCELLED = "Please check your Internet connection !!";
+        public const string ERR_LOCATION_SUBMISSION = "";
+
+        public const int GPS_MOVEMENT_THRESHHOLD = 10;
     }
 }

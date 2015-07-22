@@ -29,8 +29,11 @@ namespace LocationFinderApp
         bool isFirstTime = true;
         User newUser = new User();
         bool tracking = false;
+        Location loc = new Location();
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        bool alreadyInStack = true;
+
+        HttpServiceRequestClass req = new HttpServiceRequestClass();
+      //  bool alreadyInStack = true;
 
         // Constructor
         public MainPage()
@@ -39,6 +42,7 @@ namespace LocationFinderApp
       
         }
 
+        #region UI_CONTROLS
         /// <summary>
         /// Function to set the progress indicator on screen
         /// </summary>
@@ -54,7 +58,36 @@ namespace LocationFinderApp
                 SystemTray.ProgressIndicator.Text = progressIndicatorText;
             }
         }
-        
+
+        /// <summary>
+        /// Function to handle the text in texbox change event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox.Text != null)
+            {
+                PhoneApplicationService.Current.State[Constants.USERNAME] = textBox.Text;
+            }
+        }
+
+        /// <summary>
+        /// Callback for submit button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Submit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Call to make a http post to server
+            SetProgressIndicator(true, Constants.SENDING_LOCATION);
+            sendLocationData();
+
+        }
+        #endregion
+
+        #region PAGE_NAVIGATION_FUNCTIONS
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             base.OnBackKeyPress(e);
@@ -80,8 +113,8 @@ namespace LocationFinderApp
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (alreadyInStack)
-            {
+          //  if (alreadyInStack)
+           // {
                 newUser = viewModel.GetUserSavedData();
                 DateTime defaultDT = new DateTime();
 
@@ -111,24 +144,22 @@ namespace LocationFinderApp
                 }
                 else
                 {
-                    Lat.Text = "0.0000";
-                    Long.Text = "0.0000";
+                    Lat.Text = Constants.DEFAULT_COORDINATE;
+                    Long.Text = Constants.DEFAULT_COORDINATE;
                     fetchLocation(isFirstTime);
 
                 }           
-            }
-            alreadyInStack = false;
+          //  }
+          //  alreadyInStack = false;
            
             
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            // Updating the Label which displays the current second
-            getRelativeLastSubmittedTime(lastSubmittedDateTime);
+        #endregion
 
-        }
+        
 
+        #region FETCH_LOCATION_COORDINATES
         /// <summary>
         /// Function to fetch Location coordinates to be printed on screen
         /// </summary>
@@ -146,7 +177,7 @@ namespace LocationFinderApp
             if (!tracking)
             {
                 geoLocator.DesiredAccuracy = PositionAccuracy.High;
-                geoLocator.MovementThreshold = 100;
+                geoLocator.MovementThreshold = Constants.GPS_MOVEMENT_THRESHHOLD;
                 geoLocator.PositionChanged += geoLocator_PositionChanged;
                 geoLocator.StatusChanged += geoLocator_StatusChanged;
                 tracking = true;
@@ -165,7 +196,16 @@ namespace LocationFinderApp
 
         void geoLocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
         {
-
+            var statusGPS = String.Empty;
+            if(args.Status == PositionStatus.Ready)
+            {
+                //GPS is ready with location coordinates
+            }
+            else 
+            {
+                //Issues with Phones GPS, kindly check 
+                SetProgressIndicator(false, null);
+            }
         }
 
         void geoLocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
@@ -177,81 +217,168 @@ namespace LocationFinderApp
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    Lat.Text = args.Position.Coordinate.Point.Position.Latitude.ToString("0.0000");
-                    Long.Text = args.Position.Coordinate.Point.Position.Longitude.ToString("0.0000");
+                    Lat.Text = args.Position.Coordinate.Point.Position.Latitude.ToString(Constants.DEFAULT_COORDINATE);
+                    Long.Text = args.Position.Coordinate.Point.Position.Longitude.ToString(Constants.DEFAULT_COORDINATE);
                     SetProgressIndicator(false, null);
-                    
-                    
-                });
-
-                Dispatcher.BeginInvoke(() =>
+                    if (isFirstTime)
                     {
-                        if (isFirstTime)
-                        {
-                            SetProgressIndicator(false, null);
-                            sendLocation();
-                        }
-                    });
+                        SetProgressIndicator(false, null);
+                        sendLocationData();
+                    }
+                    isFirstTime = false;
+                });
                
             }
         }
+        #endregion
 
-        /// <summary>
-        /// Function to send coordinates to Http call
-        /// </summary>
-        public void sendLocation()
+        #region SEND_LOCATION
+
+        public void sendLocationData()
         {
-            Location loc = new Location();
             loc.Latitude = Lat.Text;
             loc.Longitude = Long.Text;
-
-            lastSubmittedDateTime = DateTime.Now;
-            getRelativeLastSubmittedTime(DateTime.Now);
 
             if (App.isRunningInBackground)
             {
                 viewModel.saveLastSubmittedTimeInBackground(lastSubmittedDateTime);
                 ShellToast toast = new ShellToast();
-                toast.Title = "Locater App";
-                toast.Content = String.Format("Location submitted at !!" + lastSubmittedDateTime.ToString());
+                toast.Title = Constants.TOAST_TITLE;
+                toast.Content = String.Format(Constants.TOAST_MSG + lastSubmittedDateTime.ToString());
                 toast.Show();
-                alreadyInStack = true;
+                //  alreadyInStack = true;
 
             }
 
+            //Create Http Request
+            HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
+            clientReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), clientReq);
 
-            viewModel.sendLocationData(loc);
-
-            MessageBox.Show(Constants.SUBMIT_MSG);
-
-        }  
-       
-
-        /// <summary>
-        /// Callback for submit button click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Submit_Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Call to make a http post to server
-            sendLocation();
-            
         }
-
-        /// <summary>
-        /// Function to handle the text in texbox change event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void GetRequestStreamCallback(IAsyncResult asynchronousResult)
         {
-            var textBox = sender as TextBox;
-            if(textBox.Text != null)
+
+            string postdata = "data=" + LocationUserName + " is now at " + loc.Latitude + "/" + loc.Longitude;
+
+            try
             {
-                PhoneApplicationService.Current.State[Constants.USERNAME] = textBox.Text;
+                HttpWebRequest requestObj = await req.sendHttpRequest(asynchronousResult, postdata);
+                requestObj.BeginGetResponse(new AsyncCallback(GetResponseCallback), requestObj);
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status != WebExceptionStatus.RequestCanceled)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_REQUEST_CANCELLED);
+                    });
+
+
+                }
+                else if (ex.Status != WebExceptionStatus.ConnectFailure)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_CONNECTION_FAILED);
+                    });
+                }
+                else if (ex.Status != WebExceptionStatus.Timeout)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_CONNECTION_TIMEOUT);
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    SetProgressIndicator(false, null);
+                    MessageBox.Show(ex.Message);
+                });
+            }
+
+        }
+
+        private async void GetResponseCallback(IAsyncResult asynchronousResult)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+
+            // End the operation
+            try
+            {
+                var responseString = await req.receiveHttpResonse(request, asynchronousResult);
+
+                if (responseString != null)
+                {
+                    if (responseString.Equals(Constants.SUCCESS))
+                    {
+                        Dispatcher.BeginInvoke(() =>
+                        {
+                            SetProgressIndicator(false, null);
+                            MessageBox.Show(Constants.SUBMIT_MSG);
+
+                            lastSubmittedDateTime = DateTime.Now;
+                            getRelativeLastSubmittedTime(DateTime.Now);
+                        });
+                    }
+                    else
+                    {
+                        Dispatcher.BeginInvoke(() =>
+                        {
+                            SetProgressIndicator(false, null);
+                            MessageBox.Show(Constants.ERROR);
+                        });
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status != WebExceptionStatus.RequestCanceled)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_REQUEST_CANCELLED);
+                    });
+
+
+                }
+                else if (ex.Status != WebExceptionStatus.ConnectFailure)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_CONNECTION_FAILED);
+                    });
+                }
+                else if (ex.Status != WebExceptionStatus.Timeout)
+                {
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        SetProgressIndicator(false, null);
+                        MessageBox.Show(Constants.ERR_CONNECTION_TIMEOUT);
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    SetProgressIndicator(false, null);
+                    MessageBox.Show(ex.Message);
+                });
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Save User info present on screen
@@ -268,6 +395,12 @@ namespace LocationFinderApp
             viewModel.saveUserData(newUser);
         }
 
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            // Updating the Label which displays the current second
+            getRelativeLastSubmittedTime(lastSubmittedDateTime);
+
+        }
         /// <summary>
         /// Get Relative time from last submission time till now
         /// </summary>
@@ -283,6 +416,9 @@ namespace LocationFinderApp
            
            lastSubmitted_txt_blk.Text = time;
         }
+
+
+      
 
     }
 }

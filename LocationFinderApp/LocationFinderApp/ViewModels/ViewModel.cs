@@ -21,7 +21,6 @@ namespace LocationFinderApp.ViewModels
         public bool isLastSubmitted = false;
         public bool isFirstTime;
         User newUser = new User();
-        HttpServiceRequestClass req = new HttpServiceRequestClass();
 
 
         #region ISOLATEDSTORAGE_SETTINGS_RELATED
@@ -103,76 +102,7 @@ namespace LocationFinderApp.ViewModels
         }
         #endregion
 
-        #region SEND_LOCATION
-        /// <summary>
-        /// Send location function initiates the 
-        /// </summary>
-        /// <returns></returns>
-        public void sendLocationData(Location location)
-        {
-            isLastSubmitted = true;
-            newUser.location.Latitude = location.Latitude;
-            newUser.location.Longitude = location.Longitude;
-
-            //Create Http Request
-            HttpWebRequest clientReq = req.createHttpRequest(Constants.URI);
-
-            clientReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), clientReq);
-             
-        }
-
         
-        private async void GetRequestStreamCallback(IAsyncResult asynchronousResult)
-        {
-            if(newUser.userName == null)
-            {
-                newUser.userName = "John Doe";
-            }
-            string postdata = "data="+ newUser.userName + " is now at "+ newUser.location.Latitude+"/"+ newUser.location.Longitude;
-           
-            try
-            {
-                HttpWebRequest requestObj = await req.sendHttpRequest(asynchronousResult, postdata);
-                requestObj.BeginGetResponse(new AsyncCallback(GetResponseCallback), requestObj);
-            }
-            catch (WebException ex)
-            {
-                if (ex.Status != WebExceptionStatus.RequestCanceled)
-                {
-                     newUser.errorMsg = ex.Message;
-
-                }
-                
-            }
-
-        }
-
-        private async void GetResponseCallback(IAsyncResult asynchronousResult)
-        {
-
-            HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
-
-            // End the operation
-            try
-            {
-                var responseString = await req.receiveHttpResonse(request, asynchronousResult);
-            
-                if (responseString != null)
-                {
-                    if(responseString.Equals(Constants.ERROR))
-                    {
-                        newUser.errorMsg = "Please Try Submitting again";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                newUser.errorMsg = ex.Message;
-            }
-        }
-
-        #endregion
-
         /// <summary>
         /// Calculate the relative time from last submission
         /// </summary>
